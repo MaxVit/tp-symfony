@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}Catalogue{% endblock %}
+    {% block body %}
+        <h1>Liste des produits</h1>
+        {% for product in products %}
+            <li>{{ product.name }} <a href="{{  path('product', {id:product.id})}} ">Show product</a> <br> <img src="/uploads/{{ product.image }}" alt="Photo Produit" width="100px"> </li>
+        {% endfor %}
+        <a href="{{ path('addProduct') }}">Add Products</a>
+    {% endblock %}

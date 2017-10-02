@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+        {% block body %}
+            <h1>Catégories</h1>
+            <ul>
+            {% for category in category %}
+                <li><a href="{{ path('oneCategory',{id : category.id}) }}">{{ category.name }} </a></li>
+            {% endfor %}
+            </ul>
+
+            <ul>
+                <li><a href="products">liste des produits</a></li>
+            </ul>
+
+            <h1>Liste des 5 derniers Produits</h1>
+            <ul>
+                {% for product in FiveLastProducts %}
+                    <li> <a href="{{  path('product', {id:product.id})}} ">{{ product.name }} <br> <img src="/uploads/{{ product.image }}" alt="Photo Produit" width="100px"> </li></a>
+                {% endfor %}
+            </ul>
+        {% endblock %}

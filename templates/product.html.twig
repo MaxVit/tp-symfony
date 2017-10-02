@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Fiche Produit{% endblock %}
+    {% block body %}
+        <h1>Fiche produit</h1>
+    <ul>
+        <li>Produit choisi : {{ product.name }}</li>
+        <li>Description du produit : {{ product.description| raw }}</li>
+        <li>Description du produit : {{ product.price }}</li>
+        <li>Image : <img src="/uploads/{{ product.image }}" alt="Photo Produit"></li>
+    </ul>
+        Comments :
+        {% for comment in comments %}
+            <ul>
+                <li>Author : {{ comment.author }}</li>
+                <li>Comment : {{ comment.commentText }}</li>
+            </ul>
+        {% endfor %}
+        {{ form_start(FormComment) }}
+        {{ form_widget(FormComment) }}
+        <input type="submit" value="Create"
+               class="btn btn-default pull-right" />
+        {{ form_end(FormComment) }}
+        <a href="{{ path('products') }}">Back Products</a>
+    {% endblock %}
